@@ -8,3 +8,5 @@
 [Write a Java program to demonstrate Semaphore usage for thread synchronization.](https://w3resource.com/java-exercises/multithreading/java-multithreading-exercise-4.php)
 
 [Thread Synchronization with CyclicBarrier](https://w3resource.com/java-exercises/multithreading/java-multithreading-exercise-5.php)
+
+[Синхронизация потоков с CountDownLatch](https://w3resource.com/java-exercises/multithreading/java-multithreading-exercise-6.php)
