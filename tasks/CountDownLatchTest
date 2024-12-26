@@ -1,0 +1,55 @@
+/*
+Средство синхронизации, которое позволяет одному или нескольким потокам ждать, пока набор операций, выполняемых в других потоках, не завершится.
+
+A CountDownLatch инициализируется заданным числом. Блокировка методов ожидания до тех пор, пока текущее число не достигнет нуля из-за инвокаций метода countDown(), после чего освобождаются все потоки ожидания и немедленно возвращаются любые последующие инвокации ожидания. Это явление с одним выстрелом -- счёт не может быть сброшен. Если вам нужна версия, которая сбрасывает счет, рассмотрите возможность использования CyclicBarrier.
+
+CountDownLatch является универсальным инструментом синхронизации и может использоваться для ряда целей. CountDownLatch, инициализированный подсчетом одного, служит простой защёлкой включения/выключения или воротом: все вызывающие нити ждут у ворот, пока он не будет открыт нитью, вызывающей countDown(). CountDownLatch, инициализированный для N, может быть использован для того, чтобы один поток ожидал, пока N потоков не завершат некоторое действие, или какое-то действие будет завершено N раз.
+
+Полезным свойством CountDownLatch является то, что он не требует, чтобы потоки, вызывающие countDown, ожидали, пока число достигнет нуля, прежде чем продолжить, он просто не позволяет любому потоку проходить мимо ожидания, пока все потоки не пройдут.
+
+Напишите Java-программу, которая использует класс CountDownLatch для синхронизации начала и окончания нескольких потоков.
+
+
+*/
+
+
+public class CountDownLatchExercise {
+  private static final int NUM_THREADS = 3;
+  private static final CountDownLatch startLatch = new CountDownLatch(1);
+  private static final CountDownLatch finishLatch = new CountDownLatch(NUM_THREADS);
+
+  public static void main(String[] args) {
+    Thread[] threads = new Thread[NUM_THREADS];
+    for (int i = 0; i < NUM_THREADS; i++) {
+      threads[i] = new Thread(new Worker());
+      threads[i].start();
+    }
+
+    // Allow threads to start simultaneously
+    startLatch.countDown();
+
+    try {
+      finishLatch.await();
+    } catch (InterruptedException e) {
+      e.printStackTrace();
+    }
+
+    System.out.println("All threads have finished their work.");
+  }
+
+  static class Worker implements Runnable {
+    public void run() {
+      try {
+        startLatch.await();
+
+        // Perform work
+
+        System.out.println("Thread " + Thread.currentThread().getName() + " has finished its work.");
+      } catch (InterruptedException e) {
+        e.printStackTrace();
+      } finally {
+        finishLatch.countDown();
+      }
+    }
+  }
+}
