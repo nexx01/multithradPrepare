@@ -10,3 +10,5 @@
 [Thread Synchronization with CyclicBarrier](https://w3resource.com/java-exercises/multithreading/java-multithreading-exercise-5.php)
 
 [Синхронизация потоков с CountDownLatch](https://w3resource.com/java-exercises/multithreading/java-multithreading-exercise-6.php)
+
+[Concurrent Read-Write Access with ReadWriteLock](https://w3resource.com/java-exercises/multithreading/java-multithreading-exercise-7.php)
