@@ -1,10 +1,3 @@
-/*
-From Wikipedia -
-In computer science, a semaphore is a variable or abstract data type used to control access to a common resource by multiple threads and avoid critical section problems in a concurrent system such as a multitasking operating system. Semaphores are a type of synchronization primitive.
-
-Write a Java program to demonstrate Semaphore usage for thread synchronization.
-*/
-
 package com.example.tdd.multithreading.tasks;
 
 import org.junit.jupiter.api.Test;

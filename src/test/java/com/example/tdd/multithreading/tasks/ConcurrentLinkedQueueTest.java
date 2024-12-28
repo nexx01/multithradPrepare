@@ -6,12 +6,6 @@ import java.util.concurrent.BrokenBarrierException;
 import java.util.concurrent.ConcurrentLinkedQueue;
 import java.util.concurrent.CyclicBarrier;
 
-/*
-Реализация Thread-Safe Queue с ConcurrentLinkedQueue
-https://w3resource.com/java-exercises/multithreading/java-multithreading-exercise-9.php
-Напишите программу Java, которая использует класс ConcurrentLinkedQueue для реализации потокобезопасной очереди.
-*/
-
 public class ConcurrentLinkedQueueTest {
     static CyclicBarrier cyclicBarrier = new CyclicBarrier(4);
 

@@ -1,12 +1,11 @@
 package com.example.tdd.multithreading.tasks;
 
+import lombok.Data;
 import org.junit.jupiter.api.Test;
 
 import java.util.LinkedList;
 import java.util.Queue;
-/*
-Write a Java program to create a producer-consumer scenario using the wait() and notify() methods for thread synchronization.
-*/
+
 public class ProducerConsumerWaitNotifyTest {
 
     private static final int BUFFER_SIZE = 5;
@@ -25,7 +24,7 @@ public class ProducerConsumerWaitNotifyTest {
 //        consumerThread.join();
     }
 
-
+  @Data
     static class Producer implements Runnable {
 
         @Override
